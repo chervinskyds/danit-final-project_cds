@@ -29,6 +29,6 @@ jobs:
 
       - name: Push Docker image
         run: |
-          docker push ${{ secrets.DOCKERHUB_USERNAME }}/danit-app:${{ steps.vars.outputs.TAG }}
-          docker tag ${{ secrets.DOCKERHUB_USERNAME }}/danit-app:${{ steps.vars.outputs.TAG }} ${{ secrets.DOCKERHUB_USERNAME }}/danit-app:latest
-          docker push ${{ secrets.DOCKERHUB_USERNAME }}/danit-app:latest
+          docker push ${{ secrets.DOCKERHUB_USERNAME }}/danit-cds-final-proj-app:${{ steps.vars.outputs.TAG }}
+          docker tag ${{ secrets.DOCKERHUB_USERNAME }}/danit-cds-final-proj-app:${{ steps.vars.outputs.TAG }} ${{ secrets.DOCKERHUB_USERNAME }}/danit-cds-final-proj-app:latest
+          docker push ${{ secrets.DOCKERHUB_USERNAME }}/danit-cds-final-proj-app:latest
