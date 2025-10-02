@@ -25,7 +25,7 @@ jobs:
         run: echo "TAG=${GITHUB_SHA::7}" >> $GITHUB_OUTPUT
 
       - name: Build Docker image
-        run: docker build -t ${{ secrets.DOCKERHUB_USERNAME }}/danit-app:${{ steps.vars.outputs.TAG }} ./app
+        run: docker build -t ${{ secrets.DOCKERHUB_USERNAME }}/danit-cds-final-proj-app:${{ steps.vars.outputs.TAG }} ./app
 
       - name: Push Docker image
         run: |
