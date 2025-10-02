@@ -4,7 +4,7 @@ on:
   push:
     paths:
       - "app/**"
-      - ".github/workflowstest/docker-build-push-test.yml"
+      - ".github/workflows/docker-build-push-test.yml"
     branches: ["main"]
 
 jobs:
