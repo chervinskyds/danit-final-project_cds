@@ -4,17 +4,17 @@ on:
   push:
     paths:
       - "app/**"
-      - ".github/workflows/docker-build-push-test.yml"
+      - ".github/workflows/docker-build-push.yml"
     branches: ["main"]
 
 jobs:
   docker:
     runs-on: ubuntu-latest
     steps:
-      - name: Checkout
+      - name: Checkout repository
         uses: actions/checkout@v4
 
-      - name: Docker login
+      - name: Log in to Docker Hub
         uses: docker/login-action@v3
         with:
           username: ${{ secrets.DOCKERHUB_USERNAME }}
@@ -24,10 +24,10 @@ jobs:
         id: vars
         run: echo "TAG=${GITHUB_SHA::7}" >> $GITHUB_OUTPUT
 
-      - name: Build
-        run: docker build -t ${{ secrets.DOCKERHUB_USERNAME }}/danit-app:${{ steps.vars.outputs.TAG }} app
+      - name: Build Docker image
+        run: docker build -t ${{ secrets.DOCKERHUB_USERNAME }}/danit-app:${{ steps.vars.outputs.TAG }} ./app
 
-      - name: Push
+      - name: Push Docker image
         run: |
           docker push ${{ secrets.DOCKERHUB_USERNAME }}/danit-app:${{ steps.vars.outputs.TAG }}
           docker tag ${{ secrets.DOCKERHUB_USERNAME }}/danit-app:${{ steps.vars.outputs.TAG }} ${{ secrets.DOCKERHUB_USERNAME }}/danit-app:latest
