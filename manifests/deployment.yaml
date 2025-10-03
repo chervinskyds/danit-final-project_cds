@@ -1,0 +1,42 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: python-backend
+  namespace: app
+  labels:
+    app: python-backend
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: python-backend
+  template:
+    metadata:
+      labels:
+        app: python-backend
+    spec:
+      containers:
+        - name: python-backend
+          image: chervinskyds/danit-cds-final-proj-app
+          imagePullPolicy: Always
+          ports:
+            - containerPort: 8080   # ✅ міняємо тут
+          readinessProbe:
+            httpGet:
+              path: /
+              port: 8080            # ✅ тут
+            initialDelaySeconds: 3
+            periodSeconds: 20
+          livenessProbe:
+            httpGet:
+              path: /
+              port: 8080            # ✅ і тут
+            initialDelaySeconds: 20
+            periodSeconds: 20
+          resources:
+            requests:
+              cpu: 100m
+              memory: 128Mi
+            limits:
+              cpu: 500m
+              memory: 512Mi
