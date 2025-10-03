@@ -1,0 +1,55 @@
+# =========================
+# ОСНОВНІ ПАПКИ / ФАЙЛИ
+# =========================
+node_modules/
+dist/
+build/
+tmp/
+temp/
+.cache/
+out/
+
+# IDE та системні файли
+.vscode/
+.idea/
+*.swp
+.DS_Store
+Thumbs.db
+
+# =========================
+# ОТОЧЕННЯ / СЕКРЕТИ
+# =========================
+.env
+.env.*
+*.local
+*.secret
+*.key
+*.pem
+*.p12
+*.crt
+*.cer
+*.csr
+*.der
+*.jks
+*.pfx
+
+# JSON із секретами / сесіями
+session.json
+session.json5
+credentials.json
+aws.json
+
+# =========================
+# ЛОГИ
+# =========================
+*.log
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+pnpm-debug.log*
+
+# =========================
+# ОСОБЛИВЕ ДЛЯ ANGULAR
+# =========================
+.angular/cache/
+.angular/*
